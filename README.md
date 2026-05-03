@@ -1,16 +1,112 @@
-# React + Vite
+# Qflow Hospital Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Qflow Hospital Banner](./qflow_hospital_banner_1777821419536.png)
 
-Currently, two official plugins are available:
+Qflow Hospital is a modern, premium healthcare management platform designed to streamline patient and hospital interactions. This repository contains the front-end dashboard built with React and Vite, featuring a secure authentication system, real-time updates, and a sleek, responsive user interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+[![React](https://img.shields.io/badge/React-19.0-61DAFB?logo=react&logoColor=black)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-6.0-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![AWS S3](https://img.shields.io/badge/AWS-S3-569A31?logo=amazons3&logoColor=white)](https://aws.amazon.com/s3/)
+[![CloudFront](https://img.shields.io/badge/AWS-CloudFront-FF9900?logo=amazon-aws&logoColor=white)](https://aws.amazon.com/cloudfront/)
+[![GitHub Actions](https://img.shields.io/badge/CI/CD-GitHub_Actions-2088FF?logo=github-actions&logoColor=white)](https://github.com/features/actions)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Key Features
 
-## Expanding the ESLint configuration
+- **🔐 Secure Authentication**: Multi-layered auth flow including:
+  - Email/Password Login & Registration.
+  - 📧 OTP Verification for secure account activation.
+  - 🔑 Password Recovery (Forgot/Reset Password).
+  - 🌐 Google OAuth Integration for seamless sign-in.
+- **📊 Dynamic Dashboard**: A premium, mesh-gradient powered dashboard for monitoring hospital activities.
+- **👤 User Profile Management**: Comprehensive profile settings and account details management.
+- **🎨 Premium UI/UX**: Built with Vanilla CSS for maximum performance and flexibility, featuring glassmorphism effects and smooth transitions.
+- **📱 Fully Responsive**: Optimized for all screen sizes, from mobile to ultra-wide monitors.
+- **⚡ High Performance**: Powered by Vite for lightning-fast HMR and optimized production builds.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React 19, React Router 7
+- **Build Tool**: Vite 8
+- **Authentication**: Google OAuth 2.0, JWT-based custom auth
+- **Styling**: Vanilla CSS3 (Custom Design System)
+- **Deployment**: AWS S3 (Static Hosting) + Amazon CloudFront (CDN)
+- **CI/CD**: GitHub Actions
+
+---
+
+## 📂 Project Structure
+
+```text
+src/
+├── components/     # Reusable UI components
+│   └── layout/     # Navigation and Layout wrappers
+├── context/        # Global state (AuthContext)
+├── pages/          # Page-level components
+│   ├── Auth/       # Login, Register, OTP, Password Recovery
+│   ├── Dashboard/  # Main application dashboard
+│   └── Profile/    # User settings and profile
+├── services/       # API integration and external services
+└── assets/         # Static images and icons
+```
+
+---
+
+## ⚙️ Getting Started
+
+### Prerequisites
+
+- Node.js (v20 or higher)
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/nidhin29/qflow_website.git
+   cd qflow_website
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Configure Environment Variables**:
+   Create a `.env` file in the root directory:
+   ```env
+   VITE_GOOGLE_CLIENT_ID=your_google_client_id
+   VITE_API_URL=your_backend_api_url
+   ```
+
+4. **Run development server**:
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 🚢 Deployment
+
+The project is automatically deployed to AWS using **GitHub Actions**.
+
+### CI/CD Pipeline
+- **Branch**: `main`
+- **Build**: Vite production build
+- **Storage**: AWS S3 Bucket
+- **CDN**: Amazon CloudFront (with automatic cache invalidation)
+
+To deploy, simply push your changes to the `main` branch.
+
+---
+
+## 📄 License
+
+This project is private and intended for Qflow Hospital internal use.
+
+---
+
+*Developed with ❤️ by the Qflow Team*
