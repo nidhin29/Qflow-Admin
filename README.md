@@ -109,4 +109,4 @@ This project is private and intended for Qflow Hospital internal use.
 
 ---
 
-*Developed with ❤️ by the Qflow Team*
+*Developed with ❤️ by [Nidhin V Ninan](https://github.com/nidhin29)*
