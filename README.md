@@ -1,40 +1,50 @@
-# Qflow Hospital Dashboard
+# 🏥 QFlow - Smart Healthcare Token System
 
 ![Qflow Hospital Banner](./qflow_hospital_banner_1777821419536.png)
 
-Qflow Hospital is a modern, premium healthcare management platform designed to streamline patient and hospital interactions. This repository contains the front-end dashboard built with React and Vite, featuring a secure authentication system, real-time updates, and a sleek, responsive user interface.
-
-[![React](https://img.shields.io/badge/React-19.0-61DAFB?logo=react&logoColor=black)](https://reactjs.org/)
-[![Vite](https://img.shields.io/badge/Vite-6.0-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
-[![AWS S3](https://img.shields.io/badge/AWS-S3-569A31?logo=amazons3&logoColor=white)](https://aws.amazon.com/s3/)
-[![CloudFront](https://img.shields.io/badge/AWS-CloudFront-FF9900?logo=amazon-aws&logoColor=white)](https://aws.amazon.com/cloudfront/)
-[![GitHub Actions](https://img.shields.io/badge/CI/CD-GitHub_Actions-2088FF?logo=github-actions&logoColor=white)](https://github.com/features/actions)
+**QFlow** is a modern, premium healthcare management platform designed to eliminate waiting area congestion. It features a real-time patient queue system, event-driven background processing, and a sleek, responsive dashboard for hospital administrators.
 
 ---
 
-## 🚀 Key Features
+## 🚀 Key Technological Highlights
 
-- **🔐 Secure Authentication**: Multi-layered auth flow including:
-  - Email/Password Login & Registration.
-  - 📧 OTP Verification for secure account activation.
-  - 🔑 Password Recovery (Forgot/Reset Password).
-  - 🌐 Google OAuth Integration for seamless sign-in.
-- **📊 Dynamic Dashboard**: A premium, mesh-gradient powered dashboard for monitoring hospital activities.
-- **👤 User Profile Management**: Comprehensive profile settings and account details management.
-- **🎨 Premium UI/UX**: Built with Vanilla CSS for maximum performance and flexibility, featuring glassmorphism effects and smooth transitions.
-- **📱 Fully Responsive**: Optimized for all screen sizes, from mobile to ultra-wide monitors.
-- **⚡ High Performance**: Powered by Vite for lightning-fast HMR and optimized production builds.
+### ⚡ Real-Time Queue Management (Socket.io)
+Engineered a centralized token system that allows patients to track live queue statuses in real-time.
+*   **Instant Updates**: Token updates and "Serve Next" actions are broadcasted immediately via **Socket.io**.
+*   **Congestion Control**: Minimizes physical waiting times by allowing remote status tracking.
+
+### 📨 Event-Driven Backend (RabbitMQ)
+The system architecture implements an asynchronous message queue using **RabbitMQ** for high scalability.
+*   **Automated Reminders**: Appointment reminders and background notification processing are offloaded to background workers.
+*   **Reliable Delivery**: Ensures critical healthcare alerts are delivered even during high-traffic bursts.
+
+### 🔐 Secure Multi-Layer Auth
+*   **Email & OTP**: Secure account activation and multi-factor verification.
+*   **Google OAuth**: Seamless enterprise integration for hospital staff.
+*   **Biometric-Ready**: Designed for secure mobile access.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React 19, React Router 7
-- **Build Tool**: Vite 8
-- **Authentication**: Google OAuth 2.0, JWT-based custom auth
-- **Styling**: Vanilla CSS3 (Custom Design System)
-- **Deployment**: AWS S3 (Static Hosting) + Amazon CloudFront (CDN)
-- **CI/CD**: GitHub Actions
+*   **Frontend**: React 19 + React Router 7
+*   **Build Tool**: Vite 8 (Lightning-fast HMR)
+*   **Backend**: Node.js + Express + MongoDB
+*   **Messaging**: RabbitMQ (AMQP Broker)
+*   **Real-time**: Socket.io
+*   **Styling**: Premium Vanilla CSS3 (Custom Design System)
+*   **Infrastructure**: AWS (S3 Hosting + CloudFront CDN)
+*   **CI/CD**: GitHub Actions
+
+---
+
+## 🏗️ System Architecture
+
+QFlow follows a modern decoupled architecture:
+1.  **Patient App (Flutter)**: Mobile interface for patients to book tokens and track status.
+2.  **Hospital Dashboard (React)**: The administrative control hub for doctors and staff (this repository).
+3.  **Core API (Node.js)**: Central logic engine managing tokens, appointments, and notifications.
+4.  **DevOps**: Docker-containerized services with automated deployment pipelines.
 
 ---
 
@@ -42,15 +52,11 @@ Qflow Hospital is a modern, premium healthcare management platform designed to s
 
 ```text
 src/
-├── components/     # Reusable UI components
-│   └── layout/     # Navigation and Layout wrappers
-├── context/        # Global state (AuthContext)
-├── pages/          # Page-level components
-│   ├── Auth/       # Login, Register, OTP, Password Recovery
-│   ├── Dashboard/  # Main application dashboard
-│   └── Profile/    # User settings and profile
-├── services/       # API integration and external services
-└── assets/         # Static images and icons
+├── components/     # Reusable UI components (Glassmorphic Cards, Premium Buttons)
+├── context/        # Global state (AuthContext, QueueState)
+├── pages/          # Page-level components (Auth, Dashboard, Profile)
+├── services/       # API integration (Axios instance, WebSocket hooks)
+└── assets/         # Static images and branding
 ```
 
 ---
@@ -58,54 +64,35 @@ src/
 ## ⚙️ Getting Started
 
 ### Prerequisites
-
-- Node.js (v20 or higher)
-- npm or yarn
+*   Node.js (v20+)
+*   API Base URL configured in `.env`
 
 ### Installation
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/nidhin29/qflow_website.git
-   cd qflow_website
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-
-3. **Configure Environment Variables**:
-   Create a `.env` file in the root directory:
-   ```env
-   VITE_GOOGLE_CLIENT_ID=your_google_client_id
-   VITE_API_URL=your_backend_api_url
-   ```
-
-4. **Run development server**:
-   ```bash
-   npm run dev
-   ```
+1.  **Clone the repo**:
+    ```bash
+    git clone https://github.com/nidhin29/qflow_website.git
+    cd qflow_website
+    ```
+2.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
+3.  **Run Development Server**:
+    ```bash
+    npm run dev
+    ```
 
 ---
 
 ## 🚢 Deployment
 
-The project is automatically deployed to AWS using **GitHub Actions**.
-
-### CI/CD Pipeline
-- **Branch**: `main`
-- **Build**: Vite production build
-- **Storage**: AWS S3 Bucket
-- **CDN**: Amazon CloudFront (with automatic cache invalidation)
-
-To deploy, simply push your changes to the `main` branch.
+The project is automatically deployed to **AWS S3** and **CloudFront** via **GitHub Actions** on every push to the `main` branch, ensuring a zero-downtime update cycle.
 
 ---
 
 ## 📄 License
 
-This project is private and intended for Qflow Hospital internal use.
+This project is private and intended for hospital internal use.
 
 ---
 
